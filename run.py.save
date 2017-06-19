@@ -1,0 +1,6 @@
+#!venv/bin/python
+
+from app import app
+
+app.run()
+#app.run(host='192.170.1.35')
