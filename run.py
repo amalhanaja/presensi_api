@@ -3,4 +3,4 @@
 from app import app
 
 #app.run()
-app.run(host='192.168.1.82')
+app.run(host='presensiuas.herokuapp.com', port=1337, workers=4)

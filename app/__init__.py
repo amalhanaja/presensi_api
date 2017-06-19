@@ -14,7 +14,4 @@ from app import (
 					models
 				)
 
-from app import login
-
-if __name__ == "__main__":
-    app.run(host='bsmkomputer.herokuapp.com', port=1337, workers=4)
+# from app import login
