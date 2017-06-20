@@ -6,7 +6,19 @@ from datetime import datetime
 
 @app.route('/jadwal', methods=['GET'])
 def jadwal():
-	sekarang = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	class Zone(tzinfo):
+    def __init__(self,offset,isdst,name):
+        self.offset = offset
+        self.isdst = isdst
+        self.name = name
+    def utcoffset(self, dt):
+        return timedelta(hours=self.offset) + self.dst(dt)
+    def dst(self, dt):
+            return timedelta(hours=1) if self.isdst else timedelta(0)
+    def tzname(self,dt):
+         return self.name
+    GMT = Zone(7,False,'GMT')
+	sekarang = datetime.now(GMT).strftime('%Y-%m-%d %H:%M:%S')
 	print('getJadwal @', sekarang)
 	# date_now = datetime.datetime.now().date()
 	# schedule = Jadwal.query.filter(Jadwal.waktu_awal <= sekarang).filter(Jadwal.waktu_akhir >= sekarang).all()
