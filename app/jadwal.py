@@ -4,10 +4,7 @@ from flask_sqlalchemy import SQLAlchemy as sa
 from .models import Jadwal, Ruangan, Pengawas, Penjaga
 from datetime import datetime
 
-@app.route('/jadwal', methods=['GET'])
-def jadwal():
-
-	class Zone(tzinfo):
+class Zone(tzinfo):
 	    def __init__(self,offset,isdst,name):
 	        self.offset = offset
 	        self.isdst = isdst
@@ -18,8 +15,12 @@ def jadwal():
 	            return timedelta(hours=1) if self.isdst else timedelta(0)
 	    def tzname(self,dt):
 	         return self.name
-         
+
+@app.route('/jadwal', methods=['GET'])
+def jadwal():
+
     GMT = Zone(7,False,'GMT')
+
 	sekarang = datetime.now(GMT).strftime('%Y-%m-%d %H:%M:%S')
 	print('getJadwal @', sekarang)
 	# date_now = datetime.datetime.now().date()
