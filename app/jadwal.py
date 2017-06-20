@@ -6,8 +6,8 @@ from datetime import datetime
 
 @app.route('/jadwal', methods=['GET'])
 def jadwal():
-	print('getJadwal')
 	sekarang = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	print('getJadwal @', sekarang)
 	# date_now = datetime.datetime.now().date()
 	# schedule = Jadwal.query.filter(Jadwal.waktu_awal <= sekarang).filter(Jadwal.waktu_akhir >= sekarang).all()
 	# schedule = db.session.query(Jadwal, Ruangan).filter(Jadwal.waktu_awal <= sekarang).filter(Jadwal.waktu_akhir >= sekarang).join(Ruangan.jadwal_ruangan).all()
